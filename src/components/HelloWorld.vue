@@ -80,6 +80,9 @@
         </a>
       </li>
     </ul>
+    <div>
+      <p><span>11111111111111</span></p>
+    </div>
   </div>
 </template>
 
@@ -95,7 +98,15 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
+$indexColor: red;
+div{
+  p {
+    span {
+      color:$indexColor;
+    }
+  }
+}
 h1, h2 {
   font-weight: normal;
 }
