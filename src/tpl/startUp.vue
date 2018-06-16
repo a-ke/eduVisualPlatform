@@ -24,9 +24,9 @@
           </a>
         </div>
         <div class="navigation-list LBJS-navigation" title="录播教室">
-          <a href="#">
+          <router-link :to="{name: 'videoStudio'}">
             <img src="../../static/images/public/LBJS.png" alt="录播教室">
-          </a>
+          </router-link>
         </div>
         <div class="navigation-list XXJS-navigation" title="学校建设">
           <a href="#">

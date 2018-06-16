@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  min-width: 1280px;
+  min-height: 749px;
+}
 #app {
   height: 100%;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -45,6 +49,9 @@ export default {
   }
   #content {
     height: calc(100% - 45px);
+  }
+  [v-cloak] {
+    display: none;
   }
 }
 </style>

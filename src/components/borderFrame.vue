@@ -4,6 +4,7 @@
         <span class="frame-horn top-right-horn"></span>
         <span class="frame-horn bottom-left-horn"></span>
         <span class="frame-horn bottom-right-horn"></span>
+        <slot></slot>
     </div>
 </template>
 <script>
