@@ -131,13 +131,13 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss">
 .bgCanvas {
   width: 100%;
   height: 100%;
-}
-.bgCanvas #bg {
-  display: none;
+  #bg {
+    display: none;
+  }
 }
 </style>
 

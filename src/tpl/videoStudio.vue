@@ -12,15 +12,16 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss">
 #videoStudio {
   color: #fff;
-}
-#videoStudio .frameList {
-  width: 200px;
-  height: 800px;
-  margin-top: 100px;
-  margin-left: 100px;
+  overflow: hidden;
+  .frameList {
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+    margin-left: 100px;
+  }
 }
 </style>
 

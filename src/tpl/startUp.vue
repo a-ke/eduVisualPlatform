@@ -3,52 +3,36 @@
     <div class="content">
       <bg-canvas class="bgCanvas-component"></bg-canvas>
       <div class="navigation">
-        <div class="navigation-list IPTV-navigation" title="IPTV监管">
+        <div class="navigation-list JSCZ-navigation" title="教师成长">
           <a href="#">
-            <img src="../../static/images/public/IPTV.png" alt="IPTV监管">
+            <img src="../../static/images/public/JSCZ.png" alt="教师成长">
           </a>
         </div>
-        <div class="navigation-list wei-navigation" title="两微一端">
+        <div class="navigation-list JXFX-navigation" title="教学分析">
           <a href="#">
-            <img src="../../static/images/public/GDRMT.png" alt="两微一端">
+            <img src="../../static/images/public/JXFX.png" alt="教学分析">
           </a>
         </div>
-        <div class="navigation-list SHDF-navigation" title="扫黄打非管理">
+        <div class="navigation-list XSCZ-navigation" title="学生成长">
           <a href="#">
-            <img src="../../static/images/public/SHDF.png" alt="扫黄打非管理">
+            <img src="../../static/images/public/XSCZ.png" alt="学生成长">
           </a>
         </div>
-        <div class="navigation-list SZCB-navigation" title="数字出版监管">
+        <div class="navigation-list ZYPG-navigation" title="资源评估">
           <a href="#">
-            <img src="../../static/images/public/SZCB.png" alt="数字出版监管">
+            <img src="../../static/images/public/ZYPG.png" alt="资源评估">
           </a>
         </div>
-        <div class="navigation-list MTDX-navigation" title="媒体导向监管">
+        <div class="navigation-list LBJS-navigation" title="录播教室">
           <a href="#">
-            <img src="../../static/images/public/MTDX.png" alt="媒体导向监管">
+            <img src="../../static/images/public/LBJS.png" alt="录播教室">
           </a>
         </div>
-        <div class="navigation-list HLWSTJM-navigation" title="互联网视听节目监管">
+        <div class="navigation-list XXJS-navigation" title="学校建设">
           <a href="#">
-            <img src="../../static/images/public/HLWSTJM.png" alt="互联网视听节目监管">
+            <img src="../../static/images/public/XXJS.png" alt="学校建设">
           </a>
         </div>
-        <div class="navigation-list WLZB-navigation" title="网络直播监管">
-          <a href="#">
-            <img src="../../static/images/public/WLZB.png" alt="网络直播监管">
-          </a>
-        </div>
-        <div class="navigation-list WBJG-navigation" title="网吧监管">
-          <a href="#">
-            <img src="../../static/images/public/WBJG.png" alt="网吧监管">
-          </a>
-        </div>
-        <div class="navigation-list HWDP-navigation" title="户外大屏监管">
-          <a href="#">
-            <img src="../../static/images/public/HWDP.png" alt="户外大屏监管">
-          </a>
-        </div>
-
       </div>
     </div>
  </div>
@@ -65,85 +49,85 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss">
 #star-up {
   width: 100%;
   height: 100%;
-}
-#star-up .content {
-  width: 100%;
-  height: 100%;
-}
-#star-up .bgCanvas-component {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-#star-up .navigation {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-#star-up .navigation-list {
-  position: absolute;
-  transition: all 0.5s ease;
-  transform-origin: 50% 50%;
-}
-#star-up .navigation-list:hover {
-  transform: scale(1.2);
-}
-#star-up .navigation-list > a {
-  display: block;
-}
-#star-up .navigation-list > a img {
-  width: 100%;
-}
-#star-up .IPTV-navigation {
-  left: 22%;
-  top: 7%;
-  width: 12%;
-}
-#star-up .wei-navigation {
-  left: 52%;
-  top: 4%;
-  width: 15%;
-}
-#star-up .SHDF-navigation {
-  left: 83%;
-  top: 19%;
-  width: 12%;
-}
-#star-up .SZCB-navigation {
-  left: 11%;
-  top: 75%;
-  width: 12%;
-}
-#star-up .MTDX-navigation {
-  left: 22%;
-  top: 54%;
-  width: 15%;
-}
-#star-up .HLWSTJM-navigation {
-  left: 57%;
-  top: 70%;
-  width: 15%;
-}
-#star-up .WLZB-navigation {
-  left: 72%;
-  top: 45%;
-  width: 12%;
-}
-#star-up .WBJG-navigation {
-  left: 78%;
-  top: 78%;
-  width: 11%;
-}
-#star-up .HWDP-navigation {
-  left: 4%;
-  top: 7%;
-  width: 11%;
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+  .bgCanvas-component {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .navigation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .navigation-list {
+    position: absolute;
+    transition: all 0.5s ease;
+    transform-origin: 50% 50%;
+  }
+  .navigation-list:hover {
+    transform: scale(1.2);
+  }
+  .navigation-list > a {
+    display: block;
+  }
+  .navigation-list > a img {
+    width: 100%;
+  }
+  .JSCZ-navigation {
+    left: 22%;
+    top: 7%;
+    width: 12%;
+  }
+  .JXFX-navigation {
+    left: 52%;
+    top: 4%;
+    width: 15%;
+  }
+  .XSCZ-navigation {
+    left: 75%;
+    top: 26%;
+    width: 12%;
+  }
+  .ZYPG-navigation {
+    left: 11%;
+    top: 72%;
+    width: 12%;
+  }
+  .LBJS-navigation {
+    left: 30%;
+    top: 54%;
+    width: 15%;
+  }
+  .XXJS-navigation {
+    left: 57%;
+    top: 70%;
+    width: 15%;
+  }
+  .WLZB-navigation {
+    left: 72%;
+    top: 45%;
+    width: 12%;
+  }
+  .WBJG-navigation {
+    left: 78%;
+    top: 78%;
+    width: 11%;
+  }
+  .HWDP-navigation {
+    left: 4%;
+    top: 7%;
+    width: 11%;
+  }
 }
 </style>
