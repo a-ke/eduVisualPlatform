@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .leftNav {
   position: fixed;
   top: 0;
@@ -67,43 +67,44 @@ export default {
   box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.7);
   cursor: pointer;
   transition: all 0.4s linear;
-}
-.leftNav .arrow {
-  background: url("../../static/images/public/arrow_right.png") no-repeat center;
-  display: inline-block;
-  width: 13px;
-  height: 100%;
-  position: absolute;
-  right: -15px;
-}
-.leftNav .leftNav-list {
-  background: url("../../static/images/public/tooltip_bg_n.png") no-repeat;
-  background-size: 100% 100%;
-  width: 2.7rem;
-  height: 0.55rem;
-  text-align: center;
-  font-weight: 400;
-  font-size: 0.18rem;
-  color: #77e6fe;
-  line-height: 0.55rem;
-  margin-left: 0.15rem;
-  margin-top: 0.25rem;
-  transition: 0.2s linear;
-}
-.leftNav .leftNav-list:hover,
-.leftNav .leftNav-list.current-nav {
-  background: url("../../static/images/public/tooltip_bg_h.png") no-repeat;
-}
-.leftNav .leftNav-list .nav-touter {
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  text-decoration: none;
-}
-.leftNav .leftNav-list .nav-touter:hover {
-  color: #fff;
-  text-decoration: none;
+  .arrow {
+    background: url("../../static/images/public/arrow_right.png") no-repeat
+      center;
+    display: inline-block;
+    width: 13px;
+    height: 100%;
+    position: absolute;
+    right: -15px;
+  }
+  .leftNav-list {
+    background: url("../../static/images/public/tooltip_bg_n.png") no-repeat;
+    background-size: 100% 100%;
+    width: 2.7rem;
+    height: 0.55rem;
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.18rem;
+    color: #77e6fe;
+    line-height: 0.55rem;
+    margin-left: 0.15rem;
+    margin-top: 0.25rem;
+    transition: 0.2s linear;
+  }
+  .leftNav-list:hover,
+  .leftNav-list.current-nav {
+    background: url("../../static/images/public/tooltip_bg_h.png") no-repeat;
+  }
+  .leftNav-list .nav-touter {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+  }
+  .leftNav-list .nav-touter:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 }
 </style>
 
