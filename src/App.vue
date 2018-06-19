@@ -3,7 +3,7 @@
     <div id="head">
       <div class="head-title">教育可视化平台</div>
     </div>
-    <div id="content"> 
+    <div id="app-content"> 
       <router-view/>
     </div>
   </div>
@@ -47,7 +47,7 @@ body {
       line-height: 45px;
     }
   }
-  #content {
+  #app-content {
     height: calc(100% - 45px);
   }
   [v-cloak] {

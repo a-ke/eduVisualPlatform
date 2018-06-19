@@ -1,5 +1,5 @@
 <template>
- <div id="star-up">
+  <div id="star-up">
     <div class="content">
       <bg-canvas class="bgCanvas-component"></bg-canvas>
       <div class="navigation">
@@ -9,9 +9,9 @@
           </a>
         </div>
         <div class="navigation-list JXFX-navigation" title="教学分析">
-          <a href="#">
+          <router-link :to="{name:'teachingAnalysis'}">
             <img src="../../static/images/public/JXFX.png" alt="教学分析">
-          </a>
+          </router-link>
         </div>
         <div class="navigation-list XSCZ-navigation" title="学生成长">
           <a href="#">
@@ -19,12 +19,12 @@
           </a>
         </div>
         <div class="navigation-list ZYPG-navigation" title="资源评估">
-          <a href="#">
+          <router-link :to="{name:'ResourceAssessment'}">
             <img src="../../static/images/public/ZYPG.png" alt="资源评估">
-          </a>
+          </router-link>
         </div>
         <div class="navigation-list LBJS-navigation" title="录播教室">
-          <router-link :to="{name: 'videoStudio'}">
+          <router-link :to="{name:'videoStudio'}">
             <img src="../../static/images/public/LBJS.png" alt="录播教室">
           </router-link>
         </div>
@@ -35,8 +35,9 @@
         </div>
       </div>
     </div>
- </div>
+  </div>
 </template>
+
 
 <script>
 const bgCanvas = () => import("../components/bgCanvas.vue");
@@ -100,19 +101,19 @@ export default {
     width: 12%;
   }
   .ZYPG-navigation {
-    left: 11%;
-    top: 72%;
-    width: 12%;
-  }
-  .LBJS-navigation {
-    left: 30%;
-    top: 54%;
-    width: 15%;
-  }
-  .XXJS-navigation {
     left: 57%;
     top: 70%;
     width: 15%;
+  }
+  .LBJS-navigation {
+    left: 30%;
+    top: 52%;
+    width: 15%;
+  }
+  .XXJS-navigation {
+    left: 11%;
+    top: 72%;
+    width: 12%;
   }
   .WLZB-navigation {
     left: 72%;
