@@ -20,6 +20,9 @@ body {
   min-width: 1280px;
   min-height: 749px;
 }
+* {
+  box-sizing: border-box;
+}
 #app {
   height: 100%;
   font-family: "Avenir", Helvetica, Arial, sans-serif;

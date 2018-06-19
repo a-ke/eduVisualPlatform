@@ -4,11 +4,22 @@
         <span class="frame-horn top-right-horn"></span>
         <span class="frame-horn bottom-left-horn"></span>
         <span class="frame-horn bottom-right-horn"></span>
-        <slot></slot>
+        <div class="borderFrame-head">
+          <div v-if="title" class="titleName">
+            <span class="titleName_l"></span> 
+            <span class="titleName_m">{{title}}</span> 
+            <span class="titleName_r"></span>
+          </div>
+          <span v-if="more" class="more">
+            <a href="#">more</a>
+          </span>
+        </div>
+        <slot name="content"></slot>
     </div>
 </template>
 <script>
 export default {
+  props: ["title", "more"],
   name: "borderFrame"
 };
 </script>
@@ -45,6 +56,62 @@ export default {
     bottom: -5px;
     right: -5px;
     transform: rotate(180deg);
+  }
+  .borderFrame-head {
+    text-align: left;
+    overflow: hidden;
+    .titleName {
+      height: 0.28rem;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 0.28rem;
+      margin: 5px 0 0 5px;
+      font-size: 0.18rem;
+      .titleName_l,
+      .titleName_r {
+        width: 15px;
+        height: 100%;
+        float: left;
+      }
+      .titleName_l {
+        background: url("../../static/images/public/titleName_l.png") no-repeat;
+        background-size: 100% 100%;
+      }
+      .titleName_r {
+        background: url("../../static/images/public/titleName_r.png") no-repeat;
+        background-size: 100% 100%;
+      }
+      .titleName_m {
+        float: left;
+        height: 100%;
+        background: rgba(7, 140, 235, 0.2);
+        border-top: 1px solid rgba(7, 140, 235, 1);
+        border-bottom: 1px solid rgba(7, 140, 235, 1);
+        padding: 0 0.05rem;
+      }
+    }
+    .more {
+      background: url("../../static/images/public/moreBtn.png") no-repeat center;
+      background-size: 100%;
+      height: 0.33rem;
+      line-height: 0.32rem;
+      vertical-align: middle;
+      cursor: pointer;
+      font-weight: normal;
+      font-size: 0.15rem;
+      padding: 0 10px;
+      float: right;
+      margin-right: 0.025rem;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
   }
 }
 </style>

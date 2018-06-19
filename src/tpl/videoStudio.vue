@@ -1,7 +1,7 @@
 <template>
     <div id="videoStudio">
-        <border-frame class="frameList">
-          <span>123</span>
+        <border-frame class="frameList" title="教学分析" :more="false">
+          <span slot="content">123</span>
         </border-frame>
         <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>
     </div>
@@ -22,7 +22,7 @@ export default {
   color: #fff;
   overflow: hidden;
   .frameList {
-    width: 200px;
+    width: 600px;
     height: 200px;
     margin-top: 100px;
     margin-left: 100px;
