@@ -16,10 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  min-width: 1280px;
-  min-height: 749px;
-}
 * {
   box-sizing: border-box;
 }
