@@ -2,7 +2,7 @@
   <div id="visua-content">
     <left-nav></left-nav>
     <div id="main-wrapper">
-      <router-view/>
+        <router-view/>
     </div>
   </div>
 </template>

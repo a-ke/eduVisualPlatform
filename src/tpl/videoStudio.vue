@@ -1,6 +1,6 @@
 <template>
     <div id="videoStudio">
-        <border-frame class="frameList" title="教学分析" :more="false">
+        <border-frame class="frameList" title="教学分析" total="点播课程总数：110" :more="false">
           <span slot="content">123</span>
         </border-frame>
         <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>

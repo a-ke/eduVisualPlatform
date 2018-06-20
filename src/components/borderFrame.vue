@@ -10,6 +10,7 @@
             <span class="titleName_m">{{title}}</span> 
             <span class="titleName_r"></span>
           </div>
+          <div v-if="total" class="total">{{total}}</div>
           <span v-if="more" class="more">
             <a href="#">more</a>
           </span>
@@ -19,7 +20,7 @@
 </template>
 <script>
 export default {
-  props: ["title", "more"],
+  props: ["title", "total", "more"],
   name: "borderFrame"
 };
 </script>
@@ -61,13 +62,14 @@ export default {
     text-align: left;
     overflow: hidden;
     .titleName {
-      height: 0.28rem;
+      height: 0.3rem;
       display: inline-block;
       text-align: center;
       vertical-align: middle;
-      line-height: 0.28rem;
+      line-height: 0.3rem;
       margin: 5px 0 0 5px;
       font-size: 0.18rem;
+      font-weight: 600;
       .titleName_l,
       .titleName_r {
         width: 15px;
@@ -88,10 +90,21 @@ export default {
         background: rgba(7, 140, 235, 0.2);
         border-top: 1px solid rgba(7, 140, 235, 1);
         border-bottom: 1px solid rgba(7, 140, 235, 1);
-        padding: 0 0.05rem;
+        padding: 0 0.2rem;
       }
     }
+    .total {
+      display: inline-block;
+      height: 0.3rem;
+      vertical-align: middle;
+      margin: 5px 0 0 30px;
+      font-size: 0.17rem;
+      color: #ffd761;
+      font-weight: 600;
+      line-height: 0.3rem;
+    }
     .more {
+      float: right;
       background: url("../../static/images/public/moreBtn.png") no-repeat center;
       background-size: 100%;
       height: 0.33rem;
@@ -101,7 +114,6 @@ export default {
       font-weight: normal;
       font-size: 0.15rem;
       padding: 0 10px;
-      float: right;
       margin-right: 0.025rem;
       a {
         color: #fff;
