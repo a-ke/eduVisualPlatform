@@ -6,11 +6,15 @@ import router from './router'
 import 'reset-css'
 import 'element-ui/lib/theme-chalk/index.css'
 import {
-  Button
+  Button,
+  Row,
+  Col
 } from "element-ui"
 import echarts from "echarts"
 
 Vue.use(Button);
+Vue.use(Row);
+Vue.use(Col);
 
 Vue.config.productionTip = false
 

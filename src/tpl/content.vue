@@ -6,6 +6,7 @@
     </div>
   </div>
 </template>
+
 <script>
 const leftNav = () => import("../components/leftNav.vue");
 export default {
@@ -18,10 +19,9 @@ export default {
 <style lang="scss">
 #visua-content {
   height: 100%;
-  width: 100%;
   #main-wrapper {
     height: 100%;
-    padding: 10px 20px 10px 20px;
+    padding: 15px 20px 15px 20px;
   }
 }
 </style>
