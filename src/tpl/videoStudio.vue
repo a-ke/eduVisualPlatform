@@ -1,9 +1,20 @@
 <template>
     <div id="videoStudio">
-        <border-frame class="frameList" title="教学分析" :more="false">
-          <span slot="content">123</span>
+        <border-frame class="totalStatistics" title="总统计">
+          <div slot="content">
+            <div class="row">
+              <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>
+              <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>
+              <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>
+              <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>
+            </div>
+          </div>
         </border-frame>
-        <count-card class="countCard" :cardInfo="{title: '直播频道总数', count: 33}"></count-card>
+        <border-frame class="videoRoom" title="录播教室">
+          <span slot="content">
+            录播教室
+          </span>
+        </border-frame>
     </div>
 </template>
 <script>
@@ -19,17 +30,29 @@ export default {
 </script>
 <style lang="scss">
 #videoStudio {
+  height: 100%;
   color: #fff;
-  overflow: hidden;
-  .frameList {
-    width: 600px;
-    height: 200px;
-    margin-top: 100px;
-    margin-left: 100px;
+  .totalStatistics {
+    width: 100%;
+    height: 25%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    .row {
+      width: 100%;
+      height: 100%;
+      padding: 0 10px;
+      overflow: hidden;
+      .countCard {
+        float: left;
+        width: calc(100% / 8 - 10px);
+        height: 60%;
+        margin: 0 10px;
+      }
+    }
   }
-  .countCard {
-    width: 200px;
-    height: 200px;
+  .videoRoom {
+    width: 100%;
+    height: calc(75% - 20px);
   }
 }
 </style>
