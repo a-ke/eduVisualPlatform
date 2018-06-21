@@ -74,6 +74,9 @@ export default {
     float: right;
     width: 32%;
     height: 100%;
+    background: url("../../static/images/public/index_box2_bg.png") no-repeat
+      center;
+    background-size: 100% 100%;
   }
   .teachingAnalysis-center {
     position: absolute;
