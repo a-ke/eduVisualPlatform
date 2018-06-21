@@ -16,7 +16,8 @@ Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.prototype.$echarts = echarts;
 
 /* eslint-disable no-new */
 new Vue({

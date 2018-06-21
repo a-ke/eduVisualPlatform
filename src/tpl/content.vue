@@ -21,7 +21,7 @@ export default {
   height: 100%;
   #main-wrapper {
     height: 100%;
-    padding: 15px 20px 15px 20px;
+    padding: 0.15rem 0.2rem 0.15rem 0.2rem;
   }
 }
 </style>
