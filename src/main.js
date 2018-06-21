@@ -8,15 +8,30 @@ import 'element-ui/lib/theme-chalk/index.css'
 import {
   Button,
   Row,
-  Col
+  Col,
+  Progress,
+  Scrollbar,
+  Carousel,
+  CarouselItem,
+  Message
 } from "element-ui"
 import echarts from "echarts"
+import ajaxUrl from "../static/js/url"
+import axios from "axios"
 
 Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
+Vue.use(Progress);
+Vue.use(Scrollbar);
+Vue.use(Carousel);
+Vue.use(CarouselItem);
 
 Vue.config.productionTip = false
+
+window.ajaxUrl = ajaxUrl;
+Vue.prototype.axios = axios;
+Vue.prototype.$message = Message;
 
 /* eslint-disable no-new */
 new Vue({
