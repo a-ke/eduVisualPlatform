@@ -79,6 +79,7 @@ export default {
           {
             data: [120, 200, 150, 80, 70, 110, 130, 400, 90, 190],
             type: "bar",
+            barWidth: "50%",
             itemStyle: {
               // 普通样式。
               normal: {

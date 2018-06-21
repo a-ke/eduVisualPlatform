@@ -1,8 +1,8 @@
 <template>
     <div class="hotTop">
               <div class="hotTop-title">{{title}}</div>
-              <ul class="hotTop-content">
-                <li class="hotTop-list" v-for="(list,index) in lists" :key="index">
+              <ul class="hotTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
+                <li class="hotTop-list" v-for="(list,index) in lists" :key="index" :style="{height:(100/lists.length)+'%'}">
                   <span :class="{'hotTop-list-index':true,top3:index<3}">{{index+1}}</span>
                   <div class="hotTop-list-title">{{list.title}}</div>                  
                   <span class="hotTop-list-progress"><span class="progress" :style="{width:(100-index*10)+'%'}"></span></span>
@@ -37,9 +37,8 @@ export default {
     height: 100%;
     border: 1px solid #142d53;
     border-radius: 5px;
-    padding: 10px;
+    padding: 0 10px;
     .hotTop-list {
-      padding: 0.105rem 0;
       overflow: hidden;
       .hotTop-list-index {
         float: left;

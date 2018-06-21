@@ -254,14 +254,14 @@ export default {
   .bottom {
     height: calc(100% - 5.54rem - 20px);
     padding: 0.05rem;
-    margin-top: 20px;
+    margin-top: 0.2rem;
     overflow: hidden;
     .liveCard {
       width: 100%;
       height: 100%;
       .content {
         height: calc(100% - 0.3rem);
-        padding: 0.1rem;
+        padding: 0.1rem 0.1rem 0.2rem 0.1rem;
         overflow: hidden;
         .orderTop-component {
           float: left;
