@@ -1,7 +1,7 @@
 <template>
   <div class="countCard">
     <div class="titleDetail" v-cloak>{{cardInfo.title}}</div>
-    <div class="numDetail" :title="cardInfo.count" v-cloak>{{cardInfo.count}}</div>
+    <div class="numDetail" :title="cardInfo.count+(cardInfo.unit||'')" v-cloak>{{cardInfo.count}}<span class="unit" v-cloak>{{cardInfo.unit}}</span></div>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -13,24 +13,25 @@
     border-radius: 15px;
     .titleDetail {
       width: 100%;
-      height: 0.4rem;
-      line-height: 0.4rem;
+      height: 0.57rem;
+      line-height: 0.65rem;
       background: #137FC8;
-      text-align: left;
-      padding: 0 0 0 10%;
       overflow: hidden;
     }
     .numDetail {
       width: 100%;
       height: calc(100% - 0.4rem);
       text-align: center;
-      font-size: 0.35rem;
+      font-size: 0.36rem;
       color: #F0BD26;
       font-weight: 600;
-      line-height: 0.9rem;
+      line-height: 1.1rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      .unit {
+        font-size: 0.27rem;
+      }
     }
   }
 
@@ -39,9 +40,9 @@
     line-height: 0.6rem;
   }
 }
-@media screen and (max-width: 0.75rem) {
+@media screen and (max-width: 1024px) {
   .numDetail {
-    line-height: 0.6rem;
+    line-height: 0.5rem;
   }
 }
 </style>
@@ -52,7 +53,7 @@ export default {
 
     }
   },
-  props: ["cardInfo"],//cardInfo {title:"", count:19}
+  props: ["cardInfo"],//cardInfo {title:"", count:19, unit: '人'}
 }
 </script>
 

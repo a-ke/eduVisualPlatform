@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import './mock/keke.js'
 export default {
   name: "App"
 };
@@ -48,6 +49,21 @@ export default {
   }
   #app-content {
     height: calc(100% - 45px);
+  }
+  .el-scrollbar {
+    height: 100%;
+  }
+  .el-scrollbar .el-scrollbar__wrap {
+    height: 100%;
+    overflow: auto;
+  }
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
   }
   [v-cloak] {
     display: none;
