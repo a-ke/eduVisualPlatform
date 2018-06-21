@@ -269,7 +269,7 @@ export default {
           height: 100%;
         }
         .liveHotTop-component {
-          margin-left: 3.8rem;
+          margin-left: 4rem;
           margin-right: 4.8rem;
           height: 100%;
         }
