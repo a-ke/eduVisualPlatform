@@ -29,13 +29,14 @@
   border-radius: 3px;
   background: #082242;
   padding: 1px 1px 0.2rem 1px;
-  // background-image: repeating-linear-gradient(
-  //   -45deg,
-  //   hsla(0, 0%, 100%, 0.1),
-  //   hsla(0, 0%, 100%, 0.1) 5px,
-  //   transparent 0,
-  //   transparent 6px
-  // );
+  background: repeating-linear-gradient(
+    45deg,
+    #132d4d 0,
+    #082242 25%,
+    #132d4d 0,
+    #082242 50%
+  );
+  background-size: 10px 10px;
   .poster {
     position: relative;
     width: 100%;

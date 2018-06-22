@@ -30,7 +30,8 @@ export default {
   width: 100%;
   height: 100%;
   border: 1px solid rgba(7, 140, 235, 0.5);
-  box-shadow: inset 0 0 59px rgba(0, 150, 255, 0.3);
+  box-shadow: inset 0 0 50px rgba(0, 150, 255, 0.6);
+  background: rgba(7, 140, 235, 0.1);
   .frame-horn {
     position: absolute;
     display: block;

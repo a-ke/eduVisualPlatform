@@ -38,6 +38,14 @@ export default {
     border: 1px solid #142d53;
     border-radius: 5px;
     padding: 0 10px;
+    background: repeating-linear-gradient(
+      45deg,
+      #132d4d 0,
+      #082242 25%,
+      #132d4d 0,
+      #082242 50%
+    );
+    background-size: 10px 10px;
     .orderTop-list {
       overflow: hidden;
       .orderTop-list-index {

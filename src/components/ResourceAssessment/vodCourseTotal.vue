@@ -74,7 +74,7 @@ export default {
               color: "#fff", //坐标值得具体的颜色
               fontSize: 13
             },
-            formatter: "{value}k"
+            formatter: "{value}"
           }
         },
         series: [
