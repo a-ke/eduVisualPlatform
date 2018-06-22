@@ -7,13 +7,25 @@
 <script>
 export default {
   name: "vodCourseProportion",
-  props: ["title"],
+  props: ["title", "data"],
   data() {
     return {
+      transData: [],
+      myChart: null,
       currentIndex: -1
     };
   },
   methods: {
+    HandleData: function() {
+      var vm = this;
+      vm.data.map(function(item, index) {
+        vm.transData.push({
+          value: item.worksCount,
+          name: item.majorName
+        });
+      });
+      vm.initCharts();
+    },
     initCharts: function() {
       var vm = this;
       var option = {
@@ -47,26 +59,14 @@ export default {
           textStyle: {
             color: "#fff",
             padding: [0, 0, 0, 5]
-          },
-          data: [
-            "院校1",
-            "院校2",
-            "院校3",
-            "院校4",
-            "院校5",
-            "院校6",
-            "院校7",
-            "院校8",
-            "院校9",
-            "院校10"
-          ]
+          }
         },
         series: [
           {
             name: "各学院课程总数统计",
             type: "pie",
             labelLine: {
-              length: 10,
+              length: 5,
               length2: 30,
               lineStyle: {
                 color: "#fff"
@@ -74,18 +74,7 @@ export default {
             },
             radius: "80%",
             center: ["40%", "50%"],
-            data: [
-              { value: 335, name: "院校1" },
-              { value: 310, name: "院校2" },
-              { value: 234, name: "院校3" },
-              { value: 135, name: "院校4" },
-              { value: 233, name: "院校5" },
-              { value: 12, name: "院校6" },
-              { value: 678, name: "院校7" },
-              { value: 45, name: "院校8" },
-              { value: 180, name: "院校9" },
-              { value: 567, name: "院校10" }
-            ],
+            data: vm.transData,
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
@@ -96,28 +85,28 @@ export default {
           }
         ]
       };
-      var myChart = vm.$echarts.init(
+      vm.myChart = vm.$echarts.init(
         document.getElementById("vodCourseProportion-echarts")
       );
-      myChart.setOption(option);
+      vm.myChart.setOption(option);
 
       setInterval(function() {
         var dataLen = option.series[0].data.length;
         // 取消之前高亮的图形
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "downplay",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
         });
         vm.currentIndex = (vm.currentIndex + 1) % dataLen;
         // 高亮当前图形
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "highlight",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
         });
         // 显示 tooltip
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "showTip",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
@@ -127,7 +116,7 @@ export default {
   },
   mounted: function() {
     var vm = this;
-    vm.initCharts();
+    vm.HandleData();
   }
 };
 </script>

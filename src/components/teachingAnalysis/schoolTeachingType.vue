@@ -52,7 +52,6 @@ export default {
             }
           },
           shape: "circle",
-
           center: ["50%", "50%"],
           radius: "70%",
           splitArea: {
@@ -94,29 +93,6 @@ export default {
         document.getElementById("schoolTeachingType-echarts")
       );
       myChart.setOption(option);
-
-      setInterval(function() {
-        var dataLen = option.series[0].data.length;
-        // 取消之前高亮的图形
-        myChart.dispatchAction({
-          type: "downplay",
-          seriesIndex: 0,
-          dataIndex: vm.currentIndex
-        });
-        vm.currentIndex = (vm.currentIndex + 1) % dataLen;
-        // 高亮当前图形
-        myChart.dispatchAction({
-          type: "highlight",
-          seriesIndex: 0,
-          dataIndex: vm.currentIndex
-        });
-        // 显示 tooltip
-        myChart.dispatchAction({
-          type: "showTip",
-          seriesIndex: 0,
-          dataIndex: vm.currentIndex
-        });
-      }, 1000);
     }
   },
   mounted: function() {

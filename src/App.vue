@@ -27,7 +27,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   overflow: hidden;
-  background: url("../static/images/public/bg.png") no-repeat 100% 100%;
+  background: url("../static/images/public/background2.png") no-repeat 100% 100%;
   #head {
     position: relative;
     top: 0;

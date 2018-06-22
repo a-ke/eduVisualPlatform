@@ -7,13 +7,24 @@
 <script>
 export default {
   name: "liveHotTop",
-  props: ["title"],
+  props: ["title", "data"],
   data() {
     return {
+      yData: [],
+      xData: [],
+      myChart: null,
       currentIndex: -1
     };
   },
   methods: {
+    HandleData: function() {
+      var vm = this;
+      vm.data.map(function(item, index) {
+        vm.xData.push(item.activityName);
+        vm.yData.push(item.studyCount);
+      });
+      vm.initCharts();
+    },
     initCharts: function() {
       var vm = this;
       var option = {
@@ -44,18 +55,7 @@ export default {
               fontSize: 13
             }
           },
-          data: [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月"
-          ]
+          data: vm.xData
         },
         yAxis: {
           type: "value",
@@ -77,7 +77,7 @@ export default {
         },
         series: [
           {
-            data: [120, 200, 150, 80, 70, 110, 130, 400, 90, 190],
+            data: vm.yData,
             type: "bar",
             barWidth: "50%",
             itemStyle: {
@@ -104,28 +104,28 @@ export default {
           }
         ]
       };
-      var myChart = vm.$echarts.init(
+      vm.myChart = vm.$echarts.init(
         document.getElementById("liveHotTop-echarts")
       );
-      myChart.setOption(option);
+      vm.myChart.setOption(option);
 
       setInterval(function() {
         var dataLen = option.series[0].data.length;
         // 取消之前高亮的图形
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "downplay",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
         });
         vm.currentIndex = (vm.currentIndex + 1) % dataLen;
         // 高亮当前图形
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "highlight",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
         });
         // 显示 tooltip
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "showTip",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
@@ -135,7 +135,7 @@ export default {
   },
   mounted: function() {
     var vm = this;
-    vm.initCharts();
+    vm.HandleData();
   }
 };
 </script>

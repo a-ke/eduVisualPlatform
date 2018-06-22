@@ -7,20 +7,31 @@
 <script>
 export default {
   name: "vodCourseTotal",
-  props: ["title"],
+  props: ["title", "data"],
   data() {
     return {
+      xData: [],
+      yData: [],
+      myChart: null,
       currentIndex: -1
     };
   },
   methods: {
+    HandleData: function() {
+      var vm = this;
+      vm.data.map(function(item, index) {
+        vm.xData.push(item.date);
+        vm.yData.push(item.worksCount);
+      });
+      vm.initCharts();
+    },
     initCharts: function() {
       var vm = this;
       var option = {
         grid: {
           x: 50,
           y: 10,
-          x2: 23,
+          x2: 30,
           y2: 30,
           borderWidth: 1
         },
@@ -42,23 +53,11 @@ export default {
             textStyle: {
               color: "#fff", //坐标值得具体的颜色,
               fontSize: 13
-            }
+            },
+            rotate: 20
           },
           boundaryGap: false,
-          data: [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"
-          ]
+          data: vm.xData
         },
         yAxis: {
           type: "value",
@@ -83,46 +82,32 @@ export default {
             type: "line",
             showAllSymbol: true,
             symbolSize: 10,
-            data: [
-              820,
-              932,
-              901,
-              934,
-              1290,
-              1330,
-              1320,
-              820,
-              932,
-              901,
-              934,
-              1290,
-              1330
-            ]
+            data: vm.yData
           }
         ]
       };
-      var myChart = vm.$echarts.init(
+      vm.myChart = vm.$echarts.init(
         document.getElementById("vodCourseTotal-echarts")
       );
-      myChart.setOption(option);
+      vm.myChart.setOption(option);
 
       setInterval(function() {
         var dataLen = option.series[0].data.length;
         // 取消之前高亮的图形
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "downplay",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
         });
         vm.currentIndex = (vm.currentIndex + 1) % dataLen;
         // 高亮当前图形
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "highlight",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
         });
         // 显示 tooltip
-        myChart.dispatchAction({
+        vm.myChart.dispatchAction({
           type: "showTip",
           seriesIndex: 0,
           dataIndex: vm.currentIndex
@@ -132,7 +117,7 @@ export default {
   },
   mounted: function() {
     var vm = this;
-    vm.initCharts();
+    vm.HandleData();
   }
 };
 </script>

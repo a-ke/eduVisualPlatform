@@ -7,13 +7,24 @@
 <script>
 export default {
   name: "liveProportion",
-  props: ["title"],
+  props: ["title", "data"],
   data() {
     return {
+      xData: [],
+      yData: [],
+      myChart: null,
       currentIndex: -1
     };
   },
   methods: {
+    HandleData: function() {
+      var vm = this;
+      vm.data.map(function(item, index) {
+        vm.xData.push({ name: item.majorName });
+        vm.yData.push(item.worksCount);
+      });
+      vm.initCharts();
+    },
     initCharts: function() {
       var vm = this;
       var option = {
@@ -51,19 +62,15 @@ export default {
               padding: [0, 0]
             }
           },
+          shape: "circle",
+          center: ["50%", "50%"],
+          radius: "60%",
           splitArea: {
             areaStyle: {
               color: "rgba(0,0,0,0)"
             }
           },
-          indicator: [
-            { name: "销售", max: 6500 },
-            { name: "管理", max: 16000 },
-            { name: "信息技术", max: 30000 },
-            { name: "客服", max: 38000 },
-            { name: "研发", max: 52000 },
-            { name: "市场", max: 25000 }
-          ]
+          indicator: vm.xData
         },
         series: [
           {
@@ -81,45 +88,22 @@ export default {
             },
             data: [
               {
-                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                value: vm.yData,
                 name: "各学院直播总数统计"
               }
             ]
           }
         ]
       };
-      var myChart = vm.$echarts.init(
+      vm.myChart = vm.$echarts.init(
         document.getElementById("liveProportion-echarts")
       );
-      myChart.setOption(option);
-
-      setInterval(function() {
-        var dataLen = option.series[0].data.length;
-        // 取消之前高亮的图形
-        myChart.dispatchAction({
-          type: "downplay",
-          seriesIndex: 0,
-          dataIndex: vm.currentIndex
-        });
-        vm.currentIndex = (vm.currentIndex + 1) % dataLen;
-        // 高亮当前图形
-        myChart.dispatchAction({
-          type: "highlight",
-          seriesIndex: 0,
-          dataIndex: vm.currentIndex
-        });
-        // 显示 tooltip
-        myChart.dispatchAction({
-          type: "showTip",
-          seriesIndex: 0,
-          dataIndex: vm.currentIndex
-        });
-      }, 1000);
+      vm.myChart.setOption(option);
     }
   },
   mounted: function() {
     var vm = this;
-    vm.initCharts();
+    vm.HandleData();
   }
 };
 </script>

@@ -18,6 +18,7 @@ import {
 import echarts from "echarts"
 import ajaxUrl from "../static/js/url"
 import axios from "axios"
+import utils from './assets/utils'
 
 Vue.use(Button);
 Vue.use(Row);

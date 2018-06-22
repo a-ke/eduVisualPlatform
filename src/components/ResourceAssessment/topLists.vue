@@ -2,11 +2,11 @@
     <div class="hotTop">
               <div class="hotTop-title">{{title}}</div>
               <ul class="hotTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
-                <li class="hotTop-list" v-for="(list,index) in lists" :key="index" :style="{height:(100/lists.length)+'%'}">
+                <li class="hotTop-list" v-for="(list,index) in lists" :key="index" :id="list.studyId" :style="{height:(100/lists.length)+'%'}">
                   <span :class="{'hotTop-list-index':true,top3:index<3}">{{index+1}}</span>
-                  <div class="hotTop-list-title">{{list.title}}</div>                  
+                  <div class="hotTop-list-title">{{list.worksName}}</div>                  
                   <span class="hotTop-list-progress"><span class="progress" :style="{width:(100-index*10)+'%'}"></span></span>
-                  <span class="hotTop-list-num">{{list.num}}</span>
+                  <span class="hotTop-list-num">{{list.studyCount}}</span>
                 </li>
               </ul>
             </div>
