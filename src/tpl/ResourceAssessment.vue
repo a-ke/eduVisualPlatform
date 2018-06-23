@@ -8,7 +8,7 @@
             </div>
             <div class="courseStatistics">
               <div class="vodCourseTotal-component">
-                <vod-course-total v-if="getVodTotalsData" title="课程总数统计(月)" :data="vodMonthTotals"></vod-course-total>
+                <vod-course-total v-if="getVodTotalsData" title="课程总数统计(个/月)" :data="vodMonthTotals"></vod-course-total>
               </div>
               <div class="vodCourseProportion-component">
                 <vod-course-proportion v-if="getVodProportionData" title="各学院课程总数统计" :data="vodProportion"></vod-course-proportion>
@@ -19,7 +19,7 @@
         <border-frame class="studyCard" title="学习分析" total="" :more="false">
           <div class="content" slot="content">
               <div class="studyTotal-component">
-                <study-total v-if="getStudyTotalsData" title="学生学习数量统计(天)" :data="studyTotals"></study-total>
+                <study-total v-if="getStudyTotalsData" title="学生学习数量统计(人/天)" :data="studyTotals"></study-total>
               </div>
               <div class="studyProportion-component">
                 <study-proportion v-if="getStudyProportionData" title="各学院学生学习总数统计" :data="studyProportion"></study-proportion>
@@ -37,7 +37,7 @@
                 <live-proportion v-if="getLiveCourseProportionData" title="各学院直播总数统计" :data="liveCourseProportion"></live-proportion>
             </div>
             <div class="liveHotTop-component">
-              <live-hot-top v-if="getLiveHotTopsData" title="最热直播统计TOP10" :data="liveHotTops"></live-hot-top>
+              <live-hot-top v-if="getLiveHotTopsData" title="最热直播统计TOP10(浏览量)" :data="liveHotTops"></live-hot-top>
             </div>
           </div>
         </border-frame>

@@ -41,6 +41,12 @@ export default {
     var vm = this;
     vm.getCurrentNav();
   },
+  watch: {
+    $route: function(newV, oldV) {
+      var vm = this;
+      vm.currentNav = newV.name;
+    }
+  },
   methods: {
     toggleNav: function($event) {
       var vm = this;

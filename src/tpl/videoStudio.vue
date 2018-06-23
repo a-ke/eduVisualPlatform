@@ -30,7 +30,8 @@ const borderFrame = () => import("../components/borderFrame.vue");
 const countCard = () => import("../components/countCard.vue");
 const videoStudioCard = () =>
   import("../components/videoStudio/videoStudioCard.vue");
-const videoStudioDefaultCard = () => import("../components/videoStudio/videoStudioDefault.vue")
+const videoStudioDefaultCard = () =>
+  import("../components/videoStudio/videoStudioDefault.vue");
 export default {
   name: "videoStudio",
   data() {
@@ -85,7 +86,7 @@ export default {
           var result = response.data;
           if (result.status == 0) {
             for (let i = 0, len = result.obj.list.length; i < len; i += 12) {
-              vm.roomList.push(result.obj.list.slice(i, i+12));
+              vm.roomList.push(result.obj.list.slice(i, i + 12));
             }
           } else {
             vm.$message.error(result.message);
