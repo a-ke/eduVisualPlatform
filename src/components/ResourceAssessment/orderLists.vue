@@ -106,6 +106,7 @@ export default {
       .orderTop-list-title.active,
       .orderTop-list-title:hover {
         font-size: 0.18rem;
+        color: #ffd761;
       }
       .orderTop-list-progress {
         float: left;

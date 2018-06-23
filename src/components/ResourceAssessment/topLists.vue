@@ -107,6 +107,7 @@ export default {
       .hotTop-list-title.active,
       .hotTop-list-title:hover {
         font-size: 0.18rem;
+        color: #ffd761;
       }
       .hotTop-list-progress {
         float: left;
