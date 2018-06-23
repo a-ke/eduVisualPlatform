@@ -37,7 +37,8 @@ export default {
         },
         tooltip: {
           show: true,
-          trigger: "axis"
+          trigger: "axis",
+          formatter: "{b}:<br>{a}:{c}人"
         },
         xAxis: {
           type: "category",
@@ -78,6 +79,7 @@ export default {
         },
         series: [
           {
+            name: "学生学习数量",
             type: "line",
             showAllSymbol: true,
             symbolSize: 10,

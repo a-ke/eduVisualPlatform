@@ -46,7 +46,8 @@ const schoolTeachingType = () =>
   import("../components/teachingAnalysis/schoolTeachingType.vue");
 const collegeTeachingType = () =>
   import("../components/teachingAnalysis/collegeTeachingType.vue");
-const diagonalBlockNav = () => import("../components/teachingAnalysis/diagonalBlockNav.vue");
+const diagonalBlockNav = () =>
+  import("../components/teachingAnalysis/diagonalBlockNav.vue");
 const rtChChart = () => import("../components/teachingAnalysis/Rt-Ch.vue");
 export default {
   name: "teachingAnalysis",
@@ -70,22 +71,23 @@ export default {
     //获取学院、专业、课程信息
     getStageGradeSubjectList() {
       var vm = this;
-      vm.axios.post(ajaxUrl.getStageGradeSubjectList_url)
-      .then(function(response) {
-        var result = response.data;
-        if (result.status == 0) {
-          console.log(result)
-          vm.currentStageId = result.obj[0].id;
-          for (let stage of result.obj) {
-            vm.stageList.push({id: stage.id, value: stage.stageName});
+      vm.axios
+        .post(ajaxUrl.getStageGradeSubjectList_url)
+        .then(function(response) {
+          var result = response.data;
+          if (result.status == 0) {
+            console.log(result);
+            vm.currentStageId = result.obj[0].id;
+            for (let stage of result.obj) {
+              vm.stageList.push({ id: stage.id, value: stage.stageName });
+            }
+          } else {
+            vm.$message.error(result.message);
           }
-        } else {
-          vm.$message.error(result.message);
-        }
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     //导航栏点击事件
     handleChange(id) {
@@ -96,52 +98,55 @@ export default {
     //获取各学院课程统计的统计情况
     getCoursesStatistics(id) {
       var vm = this;
-      vm.axios.post(ajaxUrl.getAcademyCoursesStatistics_url,{
-        id: id
-      })
-      .then(function(response) {
-        var result = response.data;
-        if (result.status == 0) {
-          vm.rt_chList = result.obj;
-        } else {
-          vm.$message.error(result.message);
-        }
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      vm.axios
+        .post(ajaxUrl.getAcademyCoursesStatistics_url, {
+          id: id
+        })
+        .then(function(response) {
+          var result = response.data;
+          if (result.status == 0) {
+            vm.rt_chList = result.obj;
+          } else {
+            vm.$message.error(result.message);
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     //获取学校教学类型统计
     getSchoolCourseTypeStatistics() {
       var vm = this;
-      vm.axios.post(ajaxUrl.getSchoolCourseTypeStatistics_url)
-      .then(function(response) {
-        var result = response.data;
-        if (result.status == 0) {
-          vm.schoolData = result.obj;
-        } else {
-          vm.$message.error(result.message);
-        }
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      vm.axios
+        .post(ajaxUrl.getSchoolCourseTypeStatistics_url)
+        .then(function(response) {
+          var result = response.data;
+          if (result.status == 0) {
+            vm.schoolData = result.obj;
+          } else {
+            vm.$message.error(result.message);
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     //获取学院教学类型统计
     getAcademyCourseTypeStatistics() {
       var vm = this;
-      vm.axios.post(ajaxUrl.getAcademyCourseTypeStatistics_url)
-      .then(function(response) {
-        var result = response.data;
-        if (result.status == 0) {
-          vm.academeData = result.obj;
-        } else {
-          vm.$message.error(result.message);
-        }
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      vm.axios
+        .post(ajaxUrl.getAcademyCourseTypeStatistics_url)
+        .then(function(response) {
+          var result = response.data;
+          if (result.status == 0) {
+            vm.academeData = result.obj;
+          } else {
+            vm.$message.error(result.message);
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   },
   watch: {
@@ -313,6 +318,23 @@ export default {
 @keyframes round {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+    -moz-transform: rotateX(0) rotateY(0) rotateZ(0);
+    -ms-transform: rotateX(0) rotateY(0) rotateZ(0);
+    -o-transform: rotateX(0) rotateY(0) rotateZ(0);
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    -moz-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    -ms-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    -o-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
   }
 }
 </style>

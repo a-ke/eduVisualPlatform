@@ -37,7 +37,8 @@ export default {
         },
         tooltip: {
           show: true,
-          trigger: "item"
+          trigger: "item",
+          formatter: "{a}:<br>{b}:{c}次"
         },
         xAxis: {
           type: "category",
@@ -77,6 +78,7 @@ export default {
         },
         series: [
           {
+            name: "浏览量",
             data: vm.yData,
             type: "bar",
             barWidth: "50%",
