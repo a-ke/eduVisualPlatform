@@ -2,19 +2,19 @@
     <div id="teachingAnalysis">
       <div class="teachingAnalysis-left">
         <div class="teachingAnalysis-left-top">  
-            <school-teaching-type title="学校教学类型统计" :dataList="schoolData"></school-teaching-type>
+            <school-teaching-type v-if="schoolData.length" title="学校教学类型统计" :dataList="schoolData"></school-teaching-type>
           <!-- <teaching-border-frame title="学校教学类型统计" total="" :more="false">
             <school-teaching-type title="学校教学类型统计"></school-teaching-type>
           </teaching-border-frame> -->
         </div>
         <div class="teachingAnalysis-left-bottom">
-          <college-teaching-type title="各学院教学类型统计" :dataList="academeData"></college-teaching-type>
+          <college-teaching-type v-if="academeData.length" title="各学院教学类型统计" :dataList="academeData"></college-teaching-type>
         </div>
       </div>
       <div class="teachingAnalysis-right">
         <div class="teachingAnalysis-right-top">
           <diagonal-block-nav class="nav-style" :navList="stageList" @handleChange="handleChange"></diagonal-block-nav>
-          <rt-ch-chart :dataList="rt_chList"></rt-ch-chart>
+          <rt-ch-chart v-if="rt_chList.length" class="rt-ch-chart" :dataList="rt_chList"></rt-ch-chart>
         </div>
          <div class="teachingAnalysis-right-bottom">
           <img src="../../static/images/public/index_tips.png" alt="">
@@ -197,6 +197,7 @@ export default {
       padding-top: 1.5rem;
       padding-left: 0.4rem;
       padding-right: 0.4rem;
+      padding-bottom: 0.8rem;
       background: url("../../static/images/public/index_box2_bg.png") no-repeat
         center;
       background-size: 100% 100%;
@@ -204,6 +205,9 @@ export default {
         height: 0.32rem;
         line-height: 0.32rem;
         margin-bottom: 0.2rem;
+      }
+      .rt-ch-chart {
+        height: calc(100% - 0.52rem);
       }
     }
     .teachingAnalysis-right-bottom {

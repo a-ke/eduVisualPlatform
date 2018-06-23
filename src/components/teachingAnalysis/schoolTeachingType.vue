@@ -99,14 +99,9 @@ export default {
       myChart.setOption(option);
     }
   },
-  watch: {
-    dataList: function() {
-      var vm = this;
-      vm.initCharts(vm.dataList);
-    }
-  },
   mounted: function() {
     var vm = this;
+    vm.initCharts(vm.dataList);
   }
 };
 </script>

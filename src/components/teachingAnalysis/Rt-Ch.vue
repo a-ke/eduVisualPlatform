@@ -4,7 +4,7 @@
 <style lang="scss">
 #Rt-Ch {
   width: 100%;
-  height: 4rem;
+  height: 100%;
 }
 </style>
 <script>
@@ -18,6 +18,12 @@ export default {
   methods: {
     initChart(dataList) {
       var vm = this;
+      var width = document.getElementById("Rt-Ch").offsetWidth;
+      var height = document.getElementById("Rt-Ch").offsetHeight;
+      var w_h_min = width;
+      if (w_h_min > height) {
+        w_h_min = height;
+      }
       var option = {
         xAxis: {
           name: "Rt",
@@ -74,7 +80,10 @@ export default {
           }
         },
         grid: {
-          top: 100
+          top: 100,
+          left: "center",
+          width: w_h_min-150,
+          height: w_h_min-150
         },
         legend: {
           itemWidth: 15,
@@ -267,7 +276,7 @@ export default {
         color: '#80FBFF'
       },
     ];
-    // vm.initChart();
+    vm.initChart(vm.dataList);
   }
 };
 </script>
