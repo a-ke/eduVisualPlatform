@@ -94,6 +94,9 @@
       .progressStyle {
         display: inline-block;
         width: calc(100% - 0.6rem);
+        .el-progress-bar__inner {
+          background: #00ff00;
+        }
       }
     }
   }
