@@ -10,8 +10,7 @@ export default {
   props: ["title", "data"],
   data() {
     return {
-      xData: [],
-      yData: [],
+      transData: [],
       myChart: null,
       currentIndex: -1
     };
@@ -20,8 +19,10 @@ export default {
     HandleData: function() {
       var vm = this;
       vm.data.map(function(item, index) {
-        vm.xData.push({ name: item.majorName });
-        vm.yData.push(item.worksCount);
+        vm.transData.push({
+          value: item.worksCount,
+          name: item.majorName
+        });
       });
       vm.initCharts();
     },
@@ -50,48 +51,38 @@ export default {
         },
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c}"
+          formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
-        radar: {
-          name: {
-            textStyle: {
-              color: "#fff",
-              fontSize: 14,
-              backgroundColor: "transparent",
-              borderRadius: 3,
-              padding: [0, 0]
-            }
+        legend: {
+          orient: "vertical",
+          left: "right",
+          textStyle: {
+            color: "#fff",
+            padding: [0, 0, 0, 5]
           },
-          shape: "circle",
-          center: ["50%", "50%"],
-          radius: "60%",
-          splitArea: {
-            areaStyle: {
-              color: "rgba(0,0,0,0)"
-            }
-          },
-          indicator: vm.xData
+          padding: [0, 15, 0, 0]
         },
         series: [
           {
             name: "各学院直播总数统计",
-            type: "radar",
-            itemStyle: {
-              color: "#096AB0"
-            },
-            lineStyle: {
-              color: "#00B7F1" // 图表中各个图区域的边框线颜色
-            },
-            areaStyle: {
-              color: "#00B7F1",
-              opacity: 0.5
-            },
-            data: [
-              {
-                value: vm.yData,
-                name: "各学院直播总数统计"
+            type: "pie",
+            labelLine: {
+              length: 5,
+              length2: 10,
+              lineStyle: {
+                color: "#fff"
               }
-            ]
+            },
+            radius: "70%",
+            center: ["45%", "50%"],
+            data: vm.transData,
+            itemStyle: {
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)"
+              }
+            }
           }
         ]
       };
@@ -99,6 +90,28 @@ export default {
         document.getElementById("liveProportion-echarts")
       );
       vm.myChart.setOption(option);
+      setInterval(function() {
+        var dataLen = option.series[0].data.length;
+        // 取消之前高亮的图形
+        vm.myChart.dispatchAction({
+          type: "downplay",
+          seriesIndex: 0,
+          dataIndex: vm.currentIndex
+        });
+        vm.currentIndex = (vm.currentIndex + 1) % dataLen;
+        // 高亮当前图形
+        vm.myChart.dispatchAction({
+          type: "highlight",
+          seriesIndex: 0,
+          dataIndex: vm.currentIndex
+        });
+        // 显示 tooltip
+        vm.myChart.dispatchAction({
+          type: "showTip",
+          seriesIndex: 0,
+          dataIndex: vm.currentIndex
+        });
+      }, 1000);
     }
   },
   mounted: function() {

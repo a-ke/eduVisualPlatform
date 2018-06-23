@@ -4,7 +4,7 @@
           <border-frame class="vodCard" title="点播统计" :total="'点播课程总数：'+vodTotals" :more="false">
           <div class="content" slot="content">
             <div class="hotTop-component">
-              <top-lists title="最热课程TOP10" :lists="vodTops"></top-lists>
+              <top-lists v-if="getVodTopsData" title="最热课程TOP10" :lists="vodTops"></top-lists>
             </div>
             <div class="courseStatistics">
               <div class="vodCourseTotal-component">
@@ -31,7 +31,7 @@
         <border-frame class="liveCard" title="直播统计" :total="'直播课程总数：'+liveTotals" :more="false">
           <div class="content" slot="content">
             <div class="orderTop-component">
-              <order-lists title="直播预约" :lists="liveOrders"></order-lists>
+              <order-lists v-if="getLiveOrdersData" title="直播预约" :lists="liveOrders"></order-lists>
             </div>
             <div class="liveProportion-component">
                 <live-proportion v-if="getLiveCourseProportionData" title="各学院直播总数统计" :data="liveCourseProportion"></live-proportion>
@@ -66,6 +66,7 @@ export default {
   data() {
     return {
       vodTotals: 0,
+      getVodTopsData: false,
       vodTops: [],
       getVodTotalsData: false,
       vodMonthTotals: [],
@@ -78,6 +79,7 @@ export default {
       studyProportion: [],
 
       liveTotals: 0,
+      getLiveOrdersData: false,
       liveOrders: [],
       getLiveHotTopsData: false,
       liveHotTops: [],
@@ -105,6 +107,7 @@ export default {
           var result = response.data;
           if (result.status == 0) {
             vm.vodTops = result.obj;
+            vm.getVodTopsData = true;
           } else {
             vm.$message.error(result.message);
           }
@@ -190,6 +193,7 @@ export default {
           var result = response.data;
           if (result.status == 0) {
             vm.liveOrders = result.obj;
+            vm.getLiveOrdersData = true;
           } else {
             vm.$message.error(result.message);
           }

@@ -4,7 +4,7 @@
               <ul class="hotTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
                 <li class="hotTop-list" v-for="(list,index) in lists" :key="index" :id="list.studyId" :style="{height:(100/lists.length)+'%'}">
                   <span :class="{'hotTop-list-index':true,top3:index<3}">{{index+1}}</span>
-                  <div class="hotTop-list-title">{{list.worksName}}</div>                  
+                  <div :class="{'hotTop-list-title':true,active:currentTitle==index}" @mouseenter="clearInterval" @mouseleave="animateTitle">{{list.worksName}}</div>                  
                   <span class="hotTop-list-progress"><span class="progress" :style="{width:(100-index*10)+'%'}"></span></span>
                   <span class="hotTop-list-num">{{list.studyCount}}</span>
                 </li>
@@ -13,7 +13,38 @@
 </template>
 <script>
 export default {
-  props: ["title", "lists"]
+  props: ["title", "lists"],
+  data() {
+    return {
+      currentTitle: -1,
+      interValObj: null
+    };
+  },
+  methods: {
+    animateTitle: function() {
+      var vm = this;
+      console.log(vm.currentTitle);
+      vm.interValObj = setInterval(function() {
+        if (vm.currentTitle >= vm.lists.length - 1) {
+          vm.currentTitle = 0;
+        } else {
+          vm.currentTitle++;
+        }
+      }, 1000);
+    },
+    clearInterval: function() {
+      var vm = this;
+      clearInterval(vm.interValObj);
+    }
+  },
+  mounted: function() {
+    var vm = this;
+    vm.animateTitle();
+  },
+  destroyed: function() {
+    var vm = this;
+    clearInterval(vm.interValObj);
+  }
 };
 </script>
 
@@ -71,6 +102,11 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        transition: all 0.5s linear;
+      }
+      .hotTop-list-title.active,
+      .hotTop-list-title:hover {
+        font-size: 0.18rem;
       }
       .hotTop-list-progress {
         float: left;

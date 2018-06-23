@@ -37,7 +37,8 @@ export default {
         },
         tooltip: {
           show: true,
-          trigger: "axis"
+          trigger: "axis",
+          formatter: "{b}:<br>{a}:{c}个"
         },
         xAxis: {
           type: "category",
@@ -79,6 +80,7 @@ export default {
         },
         series: [
           {
+            name: "课程总数",
             type: "line",
             showAllSymbol: true,
             symbolSize: 10,
