@@ -4,7 +4,7 @@
 
 const path = require('path')
 
-var url = "http://172.12.9.220";
+var url = "http://172.17.9.220";
 
 module.exports = {
   dev: {
@@ -13,7 +13,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/visual/**/*': {
+      '/': {
         target: url,
         changeOrigin: true,
         logLevel: 'debug'

@@ -450,3 +450,197 @@ Mock.mock("/visual/resource/appointedLiveActivityList", function (options) {
     ]
   }
 })
+
+Mock.mock("/ass/manager/works/getStageGradeSubjectList.do", function(options) {
+  console.log(options);
+  return {
+    "status": 0,
+    "message": "获取数据成功!",
+    "obj": [
+        {
+            "id": 1,
+            "orders": 1,
+            "schoolSystem": 6,
+            "stageName": "计算机",
+            "entranceAge": 6,
+            "gradeList": [],
+            "subjeceList": []
+        },
+        {
+            "entranceAge": 9,
+            "gradeList": [],
+            "id": 2,
+            "orders": 2,
+            "schoolSystem": 3,
+            "stageName": "语文",
+            "subjeceList": []
+        },
+        {
+          "entranceAge": 9,
+          "gradeList": [],
+          "id": 3,
+          "orders": 2,
+          "schoolSystem": 3,
+          "stageName": "数学",
+          "subjeceList": []
+        },
+        {
+          "entranceAge": 9,
+          "gradeList": [],
+          "id": 4,
+          "orders": 2,
+          "schoolSystem": 3,
+          "stageName": "英语",
+          "subjeceList": []
+      },
+    ]
+  }
+})
+
+Mock.mock("/visual/statistic/academyCoursesStatistics", function(options) {
+  console.log(options);
+  if (JSON.parse(options.body).id == 2) {
+    return {
+      "status": 0,
+      "message": "成功",
+      "obj": [
+          {
+              "rt": 0.3,
+              "ch": 0.4,
+              "courseName":"专业一"
+          },
+          {
+              "rt": 0.3,
+              "ch": 0.5,
+              "courseName":"专业二"
+          }
+      ]
+    }
+  } else {
+    return {
+      "status": 0,
+      "message": "成功",
+      "obj": [
+          {
+              "rt": 0.6,
+              "ch": 0.4,
+              "courseName":"专业一"
+          },
+          {
+              "rt": 0.6,
+              "ch": 0.5,
+              "courseName":"专业二"
+          },
+          {
+            "rt": 0.4,
+            "ch": 0.6,
+            "courseName":"专业三"
+          },
+          {
+            "rt": 0.3,
+            "ch": 0.7,
+            "courseName":"专业四"
+          },
+          {
+            "rt": 0.6,
+            "ch": 0.4,
+            "courseName":"专业五"
+          },
+          {
+              "rt": 0.6,
+              "ch": 0.5,
+              "courseName":"专业六"
+          },
+          {
+            "rt": 0.4,
+            "ch": 0.6,
+            "courseName":"专业七"
+          },
+          {
+            "rt": 0.3,
+            "ch": 0.7,
+            "courseName":"专业八"
+          }
+      ]
+    }
+  }
+})
+
+Mock.mock("/visual/statistic/academyCourseTypeStatistics", function(options) {
+  console.log(options);
+  return {
+    "status": 0,
+    "message": "成功",
+    "obj": [
+        {
+            "academyName": "计算机学院",
+            "list": [
+                {
+                    "teachType": "讲授型",
+                    "worksCount": 23
+                },
+                {
+                    "teachType": "混合型",
+                    "worksCount": 33
+                }
+            ]
+        },
+        {
+            "academyName": "数学学院",
+            "list": [
+                {
+                    "teachType": "混合型",
+                    "worksCount": 23
+                }
+            ]
+        },
+        {
+          "academyName": "历史学院",
+          "list": [
+            {
+              "teachType": "讲授型",
+              "worksCount": 23
+          },
+          {
+              "teachType": "对话型",
+              "worksCount": 55
+          },
+              {
+                  "teachType": "混合型",
+                  "worksCount": 23
+              },
+              {
+                "teachType": "练习型",
+                  "worksCount": 33
+              }
+          ]
+       }
+    ]
+  }
+})
+
+Mock.mock("/visual/statistic/schoolCourseTypeStatistics", function(options) {
+  console.log(options);
+  return {
+    "status": 0,
+    "message": "成功",
+    "obj": [
+        {
+            "teachType": "讲授型",
+            "worksCount": 23
+        },
+        {
+            "teachType": "混合型",
+            "worksCount": 33
+        },
+        {
+          "teachType": "练习型",
+          "worksCount": 50
+      },
+      {
+          "teachType": "对话型",
+          "worksCount": 70
+      }
+    ]
+  }
+})

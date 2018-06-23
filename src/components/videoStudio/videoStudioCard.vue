@@ -103,6 +103,7 @@
 </style>
 <script>
 export default {
+  name: 'videoStudioCard',
   props: ["roomInfo"]
 };
 </script>

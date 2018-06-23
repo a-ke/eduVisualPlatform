@@ -12,4 +12,10 @@ export default {
   getHotLiveWorksList_url: "/visual/resource/hotLiveWorksList", //可视化最热直播活动列表接口
   getLiveWorksMajorStatistics_url: "/visual/resource/liveWorksMajorStatistics", //可视化各学院直播统计接口
   getAppointedLiveActivityList_url: "/visual/resource/appointedLiveActivityList", //可视化直播活动预约接口
+
+  //教学分析
+  getStageGradeSubjectList_url: "/ass/manager/works/getStageGradeSubjectList.do",//查询学院
+  getAcademyCoursesStatistics_url: "/visual/statistic/academyCoursesStatistics",//可视化各学院课程总统计接口
+  getAcademyCourseTypeStatistics_url: "/visual/statistic/academyCourseTypeStatistics",//可视化学院教学类型统计接口
+  getSchoolCourseTypeStatistics_url: "/visual/statistic/schoolCourseTypeStatistics",//可视化学校教学类型统计接口
 }
