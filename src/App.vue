@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import "./mock/keke.js";
+// import "./mock/keke.js";
 export default {
   name: "App"
 };

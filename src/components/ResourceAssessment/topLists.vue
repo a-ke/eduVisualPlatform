@@ -1,7 +1,7 @@
 <template>
     <div class="hotTop">
               <div class="hotTop-title">{{title}}</div>
-              <ul class="hotTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
+              <ul v-if="lists.length>0" class="hotTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
                 <li class="hotTop-list" v-for="(list,index) in lists" :key="index" :id="list.studyId" :style="{height:(100/lists.length)+'%'}">
                   <span :class="{'hotTop-list-index':true,top3:index<3}">{{index+1}}</span>
                   <div :class="{'hotTop-list-title':true,active:currentTitle==index}" @mouseenter="clearInterval" @mouseleave="animateTitle">{{list.worksName}}</div>                  
@@ -9,6 +9,8 @@
                   <span class="hotTop-list-num">{{list.studyCount}}</span>
                 </li>
               </ul>
+              <ul v-else class="hotTop-content">
+                <div class="no-top">暂无热门点播</div></ul>
             </div>
 </template>
 <script>
@@ -64,6 +66,7 @@ export default {
     text-align: left;
   }
   .hotTop-content {
+    position: relative;
     width: 100%;
     height: 100%;
     border: 1px solid #142d53;
@@ -127,6 +130,20 @@ export default {
         color: #fff;
         font-size: 0.14rem;
       }
+    }
+    .no-top {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.14rem;
+      margin-left: -10px;
+      text-align: center;
+      color: #1f5596;
+      font-size: 0.28rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px #01243b;
     }
   }
 }

@@ -21,7 +21,7 @@ export default {
       var newData = [];
       vm.data.map(function(item, index) {
         vm.transData.push({
-          value: item.worksCount,
+          value: item.studyCount,
           name: item.majorName
         });
       });

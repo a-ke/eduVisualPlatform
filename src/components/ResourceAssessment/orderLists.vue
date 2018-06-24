@@ -1,13 +1,16 @@
 <template>
     <div class="orderTop">
               <div class="orderTop-title">{{title}}</div>
-              <ul class="orderTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
+              <ul v-if="lists.length>0" class="orderTop-content" :style="{'padding-top':((100/lists.length)/2)+'%'}">
                 <li class="orderTop-list" v-for="(list,index) in lists" :key="index" :id="list.id" :style="{height:(100/lists.length)+'%'}">
                   <span :class="{'orderTop-list-index':true,top3:index<3}">{{index+1}}</span>
                   <div  :class="{'orderTop-list-title':true,active:currentTitle==index}" @mouseenter="clearInterval" @mouseleave="animateTitle">{{list.activityName}}</div>                  
                   <!-- <span class="orderTop-list-progress"><span class="progress" :style="{width:(100-index*10)+'%'}"></span></span> -->
                   <span class="orderTop-list-date">{{list.plannedStartTime | Date('YMDHI')}}</span>
                 </li>
+              </ul>
+              <ul v-else class="orderTop-content">
+                <div class="no-order">暂无预约活动</div>
               </ul>
             </div>
 </template>
@@ -63,6 +66,7 @@ export default {
     text-align: left;
   }
   .orderTop-content {
+    position: relative;
     width: 100%;
     height: 100%;
     border: 1px solid #142d53;
@@ -126,6 +130,20 @@ export default {
         color: #fff;
         font-size: 0.14rem;
       }
+    }
+    .no-order {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.14rem;
+      margin-left: -10px;
+      text-align: center;
+      color: #1f5596;
+      font-size: 0.28rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px #01243b;
     }
   }
 }

@@ -4,7 +4,8 @@
 
 const path = require('path')
 
-var url = "http://172.17.9.220";
+// var url = "http://172.17.9.220";
+var url = "http://172.17.36.27:8080";
 
 module.exports = {
   dev: {
@@ -28,7 +29,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

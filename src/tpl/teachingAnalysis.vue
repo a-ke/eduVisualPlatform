@@ -29,13 +29,13 @@
           </div>
         </div>
       </div>
-      <div class="teachingAnalysis-right">
-      </div>
        <div class="teachingAnalysis-center">
-         <div class="roundMove"></div>
+        <div class="teachingAnalysis-center-center">
+           <div class="roundMove"></div>
          <div class="tips1" title="教学评审系统"></div>
          <div class="tips2" title="教学评审系统"></div>
          <div class="tips3" title="教学评审系统"></div>
+        </div>
        </div>
     </div>
 </template>
@@ -72,8 +72,10 @@ export default {
     getStageGradeSubjectList() {
       var vm = this;
       vm.axios
-        .post(ajaxUrl.getStageGradeSubjectList_url)
+        .post(ajaxUrl.getStageGradeSubjectList_url, { needLoginin: 0 })
         .then(function(response) {
+          console.log(response);
+
           var result = response.data;
           if (result.status == 0) {
             console.log(result);
@@ -173,8 +175,9 @@ export default {
   overflow: hidden;
   .teachingAnalysis-left {
     float: left;
-    width: 32%;
+    width: 34%;
     max-width: 500px;
+    padding-right: 2%;
     height: 100%;
     .teachingAnalysis-left-top {
       width: 100%;
@@ -195,6 +198,7 @@ export default {
   .teachingAnalysis-right {
     float: right;
     width: 32%;
+    max-width: 500px;
     height: 100%;
     .teachingAnalysis-right-top {
       width: 100%;
@@ -264,54 +268,62 @@ export default {
     }
   }
   .teachingAnalysis-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 32%;
-    padding-top: 32%;
-    margin-top: -16%;
-    margin-left: -16%;
-    background: url("../../static/images/public/index_img.png") no-repeat center;
-    background-size: 100% auto;
-    .roundMove {
+    position: relative;
+    margin-left: 36%;
+    margin-right: 32%;
+    height: 100%;
+    .teachingAnalysis-center-center {
       position: absolute;
-      width: 38%;
-      height: 40%;
-      top: 49.5%;
-      left: 52.5%;
-      background: rgba(0, 0, 0, 0) -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 198, 255, 0)), to(rgba(0, 198, 255, 0.5)));
-      border-left: 1px solid rgba(0, 198, 255, 0.6);
-      border-radius: 0 0 100%;
-      transform: rotate(0deg);
-      transform-origin: 0 0 0;
-      animation: 4s linear 0s normal both infinite running round;
-    }
-    .tips1 {
-      position: absolute;
-      left: -10%;
-      top: 29%;
-      width: 12%;
-      height: 39%;
-      background: url("../../static/images/public/nav_zy.png") no-repeat;
-      background-size: 100% 100%;
-    }
-    .tips2 {
-      position: absolute;
-      left: -6%;
-      top: -4%;
-      width: 28%;
-      height: 34%;
-      background: url("../../static/images/public/nav_nr.png") no-repeat;
-      background-size: 100% 100%;
-    }
-    .tips3 {
-      position: absolute;
-      left: 18%;
-      top: -15.5%;
-      width: 35%;
-      height: 19%;
-      background: url("../../static/images/public/nav_zl.png") no-repeat;
-      background-size: 100% 100%;
+      top: 50%;
+      width: 100%;
+      padding-top: 100%;
+      margin-top: -50%;
+      background: url("../../static/images/public/index_img.png") no-repeat
+        center;
+      background-size: 100% auto;
+      .roundMove {
+        position: absolute;
+        width: 38%;
+        height: 40%;
+        top: 49.5%;
+        left: 52.5%;
+        background: rgba(0, 0, 0, 0) -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 198, 255, 0)), to(rgba(0, 198, 255, 0.5)));
+        border-left: 1px solid rgba(0, 198, 255, 0.6);
+        border-radius: 0 0 100%;
+        transform: rotate(0deg);
+        transform-origin: 0 0 0;
+        animation: 4s linear 0s normal both infinite running round;
+      }
+      .tips1 {
+        position: absolute;
+        left: -8%;
+        top: 26%;
+        width: 12%;
+        height: 39%;
+        background: url("../../static/images/public/nav_zy.png") no-repeat;
+        background-size: 100% 100%;
+        transform: rotate(7deg);
+      }
+      .tips2 {
+        position: absolute;
+        left: 1%;
+        top: -7%;
+        width: 28%;
+        height: 34%;
+        background: url("../../static/images/public/nav_nr.png") no-repeat;
+        background-size: 100% 100%;
+        transform: rotate(8deg);
+      }
+      .tips3 {
+        position: absolute;
+        left: 30%;
+        top: -15%;
+        width: 35%;
+        height: 19%;
+        background: url("../../static/images/public/nav_zl.png") no-repeat;
+        background-size: 100% 100%;
+        transform: rotate(10deg);
+      }
     }
   }
 }

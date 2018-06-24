@@ -9,14 +9,11 @@ export default {
   name: "collegeTeachingType",
   props: ["title", "dataList"],
   data() {
-    return {
-      currentIndex: -1
-    };
+    return {};
   },
   methods: {
     initCharts: function(dataList) {
       var vm = this;
-
       var option = {
         baseOption: {
           title: {
@@ -71,7 +68,7 @@ export default {
             textStyle: {
               color: "#fff",
               padding: [0, 0, 0, 5]
-            },
+            }
             // padding: [0, 15, 0, 0],
             // data: ["混合型", "对话型", "练习型", "讲授型"]
           },
@@ -85,7 +82,7 @@ export default {
               name: "各学院教学类型统计",
               type: "pie",
               center: ["50%", "40%"],
-              radius: "60%",
+              radius: "60%"
             }
           ]
         },
@@ -95,22 +92,22 @@ export default {
         let legend = [];
         let data = [];
         for (let type of item.list) {
-          legend.push(type.teachType);
+          legend.push(type.typeName);
           data.push({
-            name: type.teachType,
+            name: type.typeName,
             value: type.worksCount
           });
         }
         option.baseOption.timeline.data.push(item.academyName);
         option.options.push({
-            title: { text: `${item.academyName}各教学类型统计` },
-            legend: {data: legend},
-            series: [
-              {
-                data: data
-              }
-            ]
-          });
+          title: { text: `${item.academyName}各教学类型统计` },
+          legend: { data: legend },
+          series: [
+            {
+              data: data
+            }
+          ]
+        });
       }
       var myChart = vm.$echarts.init(
         document.getElementById("collegeTeachingType-echarts")
@@ -132,8 +129,9 @@ export default {
   padding-top: 0.3rem;
   .collegeTeachingType-title {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -5px;
+    left: 50%;
+    margin-left: -0.72rem;
     height: 0.3rem;
     line-height: 0.3rem;
     font-size: 0.16rem;

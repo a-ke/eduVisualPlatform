@@ -77,10 +77,7 @@ export default {
     getCastRoomStaticsInfo() {
       var vm = this;
       vm.axios
-        .post(ajaxUrl.getCastRoomStaticsInfo_url, {
-          currentPage: 0,
-          numPerPage: 0
-        })
+        .post(ajaxUrl.getCastRoomStaticsInfo_url)
         .then(function(response) {
           console.log(response);
           var result = response.data;

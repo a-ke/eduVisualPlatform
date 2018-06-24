@@ -21,13 +21,27 @@ export default {
       var vm = this;
       vm.data.map(function(item, index) {
         vm.xData.push(item.activityName);
-        vm.yData.push(item.studyCount);
+        vm.yData.push(item.playCount);
       });
       vm.initCharts();
     },
     initCharts: function() {
       var vm = this;
       var option = {
+        color: [
+          "#F29300",
+          "#277BC0",
+          "#30FA76",
+          "#A05623",
+          "#FFB980",
+          "#D44E24",
+          "#8B51A8",
+          "#8D98B3",
+          "#CD585F",
+          "#27727B",
+          "#C1232B",
+          "#CBD570"
+        ],
         grid: {
           x: 50,
           y: 10,
@@ -86,21 +100,28 @@ export default {
               // 普通样式。
               normal: {
                 // 点的颜色
-                color: new vm.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  {
-                    offset: 0,
-                    color: "#CD585F"
-                  },
-                  {
-                    offset: 1,
-                    color: "#C1232B"
-                  }
-                ])
+                color: function(params) {
+                  // build a color map as your need.
+                  var colorList = [
+                    "#F29300",
+                    "#277BC0",
+                    "#30FA76",
+                    "#A05623",
+                    "#FFB980",
+                    "#D44E24",
+                    "#8B51A8",
+                    "#8D98B3",
+                    "#CD585F",
+                    "#27727B",
+                    "#C1232B",
+                    "#CBD570"
+                  ];
+                  return colorList[params.dataIndex];
+                }
               },
               emphasis: {
-                color: "#C1232B",
                 shadowBlur: 15,
-                shadowColor: "rgba(255, 35, 43, 0.9)"
+                shadowColor: "rgba(0, 0, 0, 0.9)"
               }
             }
           }

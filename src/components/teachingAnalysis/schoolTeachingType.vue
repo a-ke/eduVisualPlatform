@@ -10,37 +10,40 @@ export default {
   props: ["title", "dataList"],
   data() {
     return {
-      currentIndex: -1
+      seriesValue: [],
+      indicatorValue: [],
+      max: 0
     };
   },
   methods: {
+    HandleData: function() {
+      var vm = this;
+      vm.dataList.map(function(item, index) {
+        if (item.worksCount > vm.max) {
+          vm.max = item.worksCount;
+        }
+        vm.seriesValue.push(item.worksCount);
+        vm.indicatorValue.push({
+          max: vm.max,
+          name: item.typeName
+        });
+      });
+      vm.max = Math.floor(vm.max * 1.3);
+      vm.indicatorValue.map(function(item, index) {
+        item.max = vm.max;
+      });
+      vm.initCharts();
+    },
     initCharts: function(dataList) {
       var vm = this;
       var option = {
-        color: [
-          "#F29300",
-          "#277BC0",
-          "#30FA76",
-          "#A05623",
-          "#FFB980",
-          "#D44E24",
-          "#8B51A8",
-          "#8D98B3",
-          "#CD585F",
-          "#27727B",
-          "#C1232B",
-          "#CBD570"
-        ],
         grid: {
           x: 0,
           y: 0,
           x2: 0,
           y2: 0
         },
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c}"
-        },
+        tooltip: {},
         radar: {
           name: {
             textStyle: {
@@ -59,11 +62,11 @@ export default {
               color: "rgba(0,0,0,0)"
             }
           },
-          indicator: []
+          indicator: vm.indicatorValue
         },
         series: [
           {
-            name: "各学院直播总数统计",
+            name: "学校各教学类型比例",
             type: "radar",
             itemStyle: {
               color: "#096AB0"
@@ -75,23 +78,15 @@ export default {
               color: "#00B7F1",
               opacity: 0.5
             },
-            data: []
+            data: [
+              {
+                value: vm.seriesValue,
+                name: "学校各教学类型比例"
+              }
+            ]
           }
         ]
       };
-      var max = 0;
-      var value = [];
-      for(let item of dataList) {
-        if (item.worksCount>max) {
-          max = item.worksCount;
-        }
-        value.push(item.worksCount);
-      }
-      max = Math.floor(max * 1.3);
-      for (let item of dataList) {
-        option.radar.indicator.push({name: item.teachType, max: max});
-      }
-      option.series[0].data.push({value: value, name: "课程类型统计"});
       var myChart = vm.$echarts.init(
         document.getElementById("schoolTeachingType-echarts")
       );
@@ -101,7 +96,7 @@ export default {
   },
   mounted: function() {
     var vm = this;
-    vm.initCharts(vm.dataList);
+    vm.HandleData(vm.dataList);
   }
 };
 </script>
@@ -113,8 +108,9 @@ export default {
   padding-top: 0.3rem;
   .schoolTeachingType-title {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -5px;
+    left: 50%;
+    margin-left: -0.64rem;
     height: 0.3rem;
     line-height: 0.3rem;
     font-size: 0.16rem;

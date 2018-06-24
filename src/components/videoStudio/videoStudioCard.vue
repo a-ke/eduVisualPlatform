@@ -17,7 +17,8 @@
       </div>
       <div class="storeStatus">
         <span>储存状态</span>  
-        <el-progress class="progressStyle" :text-inside="true" :stroke-width="12" :percentage="Math.ceil((roomInfo.storageTotal-roomInfo.storageRemaining)/roomInfo.storageTotal*100)" :title="Math.ceil((roomInfo.storageTotal-roomInfo.storageRemaining)/roomInfo.storageTotal*100)+'%'"></el-progress>
+        <el-progress v-if="roomInfo.storageTotal" class="progressStyle" :text-inside="true" :stroke-width="12" :percentage="Math.ceil((roomInfo.storageTotal-roomInfo.storageRemaining)/roomInfo.storageTotal*100)" :title="Math.ceil((roomInfo.storageTotal-roomInfo.storageRemaining)/roomInfo.storageTotal*100)+'%'"></el-progress>
+         <el-progress v-else class="progressStyle" :text-inside="true" :stroke-width="12" :percentage="0" :title="'0%'"></el-progress>
       </div>
     </div>
   </div>
@@ -97,6 +98,9 @@
         .el-progress-bar__inner {
           background: #00ff00;
         }
+        .el-progress-bar__innerText {
+          color: #018dec;
+        }
       }
     }
   }
@@ -107,7 +111,7 @@
 </style>
 <script>
 export default {
-  name: 'videoStudioCard',
+  name: "videoStudioCard",
   props: ["roomInfo"]
 };
 </script>
