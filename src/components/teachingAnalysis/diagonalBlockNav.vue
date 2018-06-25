@@ -136,14 +136,14 @@ export default {
       }
     }
   },
-  watch: {
-    navList: function() {
-      var vm = this;
-      vm.$nextTick(function() {
-        vm.initNav();
-      });
-    }
-  },
+  // watch: {
+  //   navList: function() {
+  //     var vm = this;
+  //     vm.$nextTick(function() {
+  //       vm.initNav();
+  //     });
+  //   }
+  // },
   mounted: function() {
     var vm = this;
     vm.currentNav = vm.initStageId;
