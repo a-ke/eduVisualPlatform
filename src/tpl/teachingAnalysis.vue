@@ -3,9 +3,6 @@
       <div class="teachingAnalysis-left">
         <div class="teachingAnalysis-left-top">  
             <school-teaching-type v-if="schoolData.length" title="学校教学类型统计" :dataList="schoolData"></school-teaching-type>
-          <!-- <teaching-border-frame title="学校教学类型统计" total="" :more="false">
-            <school-teaching-type title="学校教学类型统计"></school-teaching-type>
-          </teaching-border-frame> -->
         </div>
         <div class="teachingAnalysis-left-bottom">
           <college-teaching-type v-if="academeData.length" title="各学院教学类型统计" :dataList="academeData"></college-teaching-type>
@@ -13,6 +10,7 @@
       </div>
       <div class="teachingAnalysis-right">
         <div class="teachingAnalysis-right-top">
+          <div class="st-title">各学院课程S-T分析图</div>
           <diagonal-block-nav v-if="stageList.length" class="nav-style" :navList="stageList" :initStageId="currentStageId" @handleChange="handleChange"></diagonal-block-nav>
           <rt-ch-chart v-if="rt_chList.length" class="rt-ch-chart" :dataList="rt_chList"></rt-ch-chart>
         </div>
@@ -40,8 +38,6 @@
     </div>
 </template>
 <script>
-const teachingBorderFrame = () =>
-  import("../components/teachingAnalysis/teachingBorderFrame.vue");
 const schoolTeachingType = () =>
   import("../components/teachingAnalysis/schoolTeachingType.vue");
 const collegeTeachingType = () =>
@@ -61,7 +57,6 @@ export default {
     };
   },
   components: {
-    teachingBorderFrame,
     schoolTeachingType,
     collegeTeachingType,
     diagonalBlockNav,
@@ -72,7 +67,7 @@ export default {
     getStageGradeSubjectList() {
       var vm = this;
       vm.axios
-        .post(ajaxUrl.getStageGradeSubjectList_url,"needLogin=0")
+        .post(ajaxUrl.getStageGradeSubjectList_url, "needLogin=0")
         .then(function(response) {
           console.log(response);
 
@@ -101,7 +96,7 @@ export default {
     getCoursesStatistics(id) {
       var vm = this;
       vm.axios
-        .post(ajaxUrl.getAcademyCoursesStatistics_url, "id="+id)
+        .post(ajaxUrl.getAcademyCoursesStatistics_url, "id=" + id)
         .then(function(response) {
           var result = response.data;
           if (result.status == 0) {
@@ -199,6 +194,7 @@ export default {
     max-width: 500px;
     height: 100%;
     .teachingAnalysis-right-top {
+      position: relative;
       width: 100%;
       height: calc(100% - 140px);
       padding-top: 1.5rem;
@@ -208,6 +204,14 @@ export default {
       background: url("../../static/images/public/index_box2_bg.png") no-repeat
         center;
       background-size: 100% 100%;
+      .st-title {
+        position: absolute;
+        top: 0.2rem;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 0.16rem;
+      }
       .nav-style {
         height: 0.32rem;
         line-height: 0.32rem;
