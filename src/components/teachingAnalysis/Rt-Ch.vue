@@ -10,9 +10,7 @@
 <script>
 export default {
   data() {
-    return {
-
-    }
+    return {};
   },
   props: ["dataList"],
   methods: {
@@ -82,8 +80,8 @@ export default {
         grid: {
           top: 100,
           left: "center",
-          width: w_h_min-150,
-          height: w_h_min-150
+          width: w_h_min - 150,
+          height: w_h_min - 150
         },
         legend: {
           itemWidth: 15,
@@ -156,7 +154,7 @@ export default {
               label: {
                 show: true,
                 color: "#fff",
-                fontSize: "18"
+                fontSize: 16
               },
               animation: false,
               data: [
@@ -198,35 +196,36 @@ export default {
                 ]
               ]
             }
-          },
+          }
         ]
       };
 
       for (let [key, item] of Object.entries(dataList)) {
-        option.legend.data.push({name: item.courseName, icon: vm.styleList[key].type});
+        option.legend.data.push({
+          name: item.courseName,
+          icon: vm.styleList[key].type
+        });
         if (key == 3) {
           //图例换行
           option.legend.data.push("");
         }
         option.series.push({
-            name: item.courseName,
-            type: "scatter",
-            symbolSize: 15,
-            symbol: vm.styleList[key].type,
-            itemStyle: {
-              color: vm.styleList[key].color
-            },
-            data: [
-              {
-                value: [item.rt, item.ch]
-              }
-            ]
+          name: item.courseName,
+          type: "scatter",
+          symbolSize: 15,
+          symbol: vm.styleList[key].type,
+          itemStyle: {
+            color: vm.styleList[key].color
+          },
+          data: [
+            {
+              value: [item.rt, item.ch]
+            }
+          ]
         });
       }
 
-      var myChart = vm.$echarts.init(
-        document.getElementById("Rt-Ch")
-      );
+      var myChart = vm.$echarts.init(document.getElementById("Rt-Ch"));
       myChart.clear();
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
@@ -244,37 +243,37 @@ export default {
     //初始化图例样式和颜色
     vm.styleList = [
       {
-        type: 'circle',
-        color: '#ff6600'
+        type: "circle",
+        color: "#ff6600"
       },
       {
-        type: 'rect',
-        color: '#30FA76'
+        type: "rect",
+        color: "#30FA76"
       },
       {
-        type: 'triangle',
-        color: '#8B51A8'
+        type: "triangle",
+        color: "#8B51A8"
       },
       {
-        type: 'diamond',
-        color: '#D44E24'
+        type: "diamond",
+        color: "#D44E24"
       },
       {
-        type: 'circle',
-        color: '#277BC0'
+        type: "circle",
+        color: "#277BC0"
       },
       {
-        type: 'rect',
-        color: '#FFB980'
+        type: "rect",
+        color: "#FFB980"
       },
       {
-        type: 'triangle',
-        color: '#A7A7A7'
+        type: "triangle",
+        color: "#A7A7A7"
       },
       {
-        type: 'diamond',
-        color: '#80FBFF'
-      },
+        type: "diamond",
+        color: "#80FBFF"
+      }
     ];
     vm.initChart(vm.dataList);
   }
