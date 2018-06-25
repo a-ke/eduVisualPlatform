@@ -13,7 +13,7 @@
       </div>
       <div class="teachingAnalysis-right">
         <div class="teachingAnalysis-right-top">
-          <diagonal-block-nav class="nav-style" :navList="stageList" @handleChange="handleChange"></diagonal-block-nav>
+          <diagonal-block-nav v-if="stageList.length" class="nav-style" :navList="stageList" :initStageId="currentStageId" @handleChange="handleChange"></diagonal-block-nav>
           <rt-ch-chart v-if="rt_chList.length" class="rt-ch-chart" :dataList="rt_chList"></rt-ch-chart>
         </div>
          <div class="teachingAnalysis-right-bottom">
@@ -72,7 +72,7 @@ export default {
     getStageGradeSubjectList() {
       var vm = this;
       vm.axios
-        .post(ajaxUrl.getStageGradeSubjectList_url, { needLoginin: 0 })
+        .post(ajaxUrl.getStageGradeSubjectList_url,"needLogin=0")
         .then(function(response) {
           console.log(response);
 
@@ -101,9 +101,7 @@ export default {
     getCoursesStatistics(id) {
       var vm = this;
       vm.axios
-        .post(ajaxUrl.getAcademyCoursesStatistics_url, {
-          id: id
-        })
+        .post(ajaxUrl.getAcademyCoursesStatistics_url, "id="+id)
         .then(function(response) {
           var result = response.data;
           if (result.status == 0) {

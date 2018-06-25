@@ -78,7 +78,7 @@ export default {
       currentNav: 1
     }
   },
-  props: ["navList"],
+  props: ["navList", "initStageId"],
   methods: {
     //选择导航
     selectNav(id) {
@@ -146,6 +146,8 @@ export default {
   },
   mounted: function() {
     var vm = this;
+    vm.currentNav = vm.initStageId;
+    vm.initNav();
   }
 };
 </script>
