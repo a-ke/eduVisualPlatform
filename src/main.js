@@ -13,7 +13,8 @@ import {
   Scrollbar,
   Carousel,
   CarouselItem,
-  Message
+  Message,
+  Loading
 } from "element-ui"
 import echarts from "echarts"
 import ajaxUrl from "../static/js/url"
@@ -27,6 +28,7 @@ Vue.use(Progress);
 Vue.use(Scrollbar);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(Loading);
 
 Vue.config.productionTip = false;
 Vue.prototype.$echarts = echarts;

@@ -1,7 +1,7 @@
 <template>
   <div class="videoStudioCard">
     <div class="poster">
-      <img src="static/images/videoStudio/default_poster.jpg" alt="">
+      <img src="static/images/videoStudio/default_poster.png" alt="">
     </div>
     <div class="main">
       <div class="roomName">{{roomInfo.roomName}}</div>

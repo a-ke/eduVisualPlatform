@@ -9,7 +9,10 @@
             <count-card class="countCard" :cardInfo="{title: '参与学生人数', count: studentCount, unit: '人'}"></count-card>
         </div>
       </border-frame>
-      <border-frame class="videoRoom" title="录播教室">
+      <border-frame v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)" class="videoRoom" title="录播教室">
           <div class="roomWrapper" slot="content">
             <!-- <el-scrollbar> -->
             <el-carousel trigger="click" height="100%">
@@ -41,7 +44,8 @@ export default {
       recordDuration: null,
       teacherCount: null,
       studentCount: null,
-      roomList: []
+      roomList: [],
+      loading: true
     };
   },
   components: {
@@ -85,6 +89,7 @@ export default {
             for (let i = 0, len = result.obj.list.length; i < len; i += 12) {
               vm.roomList.push(result.obj.list.slice(i, i + 12));
             }
+            vm.loading = false;
           } else {
             vm.$message.error(result.message);
           }
