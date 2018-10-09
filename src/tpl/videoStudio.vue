@@ -4,7 +4,7 @@
         <div class="row" slot="content">
             <count-card class="countCard" :cardInfo="{title: '录播教室数量', count: roomCount, unit: '个'}"></count-card>
             <count-card class="countCard" :cardInfo="{title: '录制课程数量', count: recordCourseCount, unit: '个'}"></count-card>
-            <count-card class="countCard" :cardInfo="{title: '录制时长', count: recordDuration, unit: '小时'}"></count-card>
+            <count-card class="countCard" :cardInfo="{title: '录制时长', count: recordDuration, unit: '分钟'}"></count-card>
             <count-card class="countCard" :cardInfo="{title: '参与老师人数', count: teacherCount, unit: '人'}"></count-card>
             <count-card class="countCard" :cardInfo="{title: '参与学生人数', count: studentCount, unit: '人'}"></count-card>
         </div>
@@ -83,11 +83,13 @@ export default {
       vm.axios
         .post(ajaxUrl.getCastRoomStaticsInfo_url)
         .then(function(response) {
-          console.log(response);
           var result = response.data;
           if (result.status == 0) {
             for (let i = 0, len = result.obj.list.length; i < len; i += 12) {
-              vm.roomList.push(result.obj.list.slice(i, i + 12));
+              var lists = result.obj.list.slice(i, i + 12);
+              lists = vm.addPoster(lists);
+              vm.roomList.push(lists);
+              console.log(vm.roomList);
             }
             vm.loading = false;
           } else {
@@ -97,6 +99,37 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    // 手动增加教室海报；
+    addPoster(arr) {
+      arr.map(function(item, index) {
+        var poster = null;
+        switch (item.roomName) {
+          case "手机互动教室":
+            poster = "static/images/videoStudio/sjhd.jpg";
+            break;
+          case "远程互动教室":
+            poster = "static/images/videoStudio/ychd.jpg";
+            break;
+          case "多屏研讨教室":
+            poster = "static/images/videoStudio/dpyt.jpg";
+            break;
+          case "智能AI教室":
+            poster = "static/images/videoStudio/znAI.jpg";
+            break;
+          case "课堂互动研讨室":
+            poster = "static/images/videoStudio/kthd.png";
+            break;
+          case "多视窗互动教室":
+            poster = "static/images/videoStudio/dschd.jpg";
+            break;
+          default:
+            poster = "static/images/videoStudio/default_poster.png";
+        }
+        item.poster = poster;
+        return item;
+      });
+      return arr;
     }
   },
   mounted: function() {

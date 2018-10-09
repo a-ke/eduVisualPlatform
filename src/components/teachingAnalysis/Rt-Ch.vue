@@ -84,9 +84,15 @@ export default {
           height: w_h_min - 150
         },
         legend: {
+          type: 'scroll',
           itemWidth: 15,
           itemHeight: 15,
           textStyle: {
+            color: "#fff"
+          },
+          pageIconColor: "#0FFCFF",
+          pageIconInactiveColor: "#B5B5B5",
+          pageTextStyle: {
             color: "#fff"
           },
           data: []
@@ -205,10 +211,10 @@ export default {
           name: item.courseName,
           icon: vm.styleList[key].type
         });
-        if (key == 3) {
-          //图例换行
-          option.legend.data.push("");
-        }
+        // if (key == 3) {
+        //   //图例换行
+        //   option.legend.data.push("");
+        // }
         option.series.push({
           name: item.courseName,
           type: "scatter",

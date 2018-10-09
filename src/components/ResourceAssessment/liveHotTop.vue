@@ -68,7 +68,14 @@ export default {
             textStyle: {
               color: "#fff", //坐标值得具体的颜色,
               fontSize: 13
-            }
+            },
+            formatter: function(value, index) {
+              // 10 6 这些你自定义就行
+              var v = value.substring(0, 5) + "...";
+              return value.length > 5 ? v : value;
+            },
+            rotate: 0,
+            interval: 0
           },
           data: vm.xData
         },

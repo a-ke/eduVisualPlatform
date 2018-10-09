@@ -1,14 +1,14 @@
 <template>
   <div class="videoStudioCard">
     <div class="poster">
-      <img src="static/images/videoStudio/default_poster.png" alt="">
+      <img :src="roomInfo.poster" :alt="roomInfo.roomName">
     </div>
     <div class="main">
       <div class="roomName">{{roomInfo.roomName}}</div>
       <div class="row">
         <div class="deviceStatus">
-          设备状态
-          <img :src="roomInfo.deviceStatus?'static/images/videoStudio/green.png':'static/images/videoStudio/red.png'">
+          开课状态
+          <img :src="roomInfo.deviceStatus?'static/images/videoStudio/red.png':'static/images/videoStudio/green.png'">
         </div>
         <div class="networkStatus">
           网络状态

@@ -1,7 +1,7 @@
 <template>
     <div class="bgCanvas">
         <canvas id="canvas">该浏览器不支持canvas</canvas>  
-        <img id="bg" src="../../static/images/public/background.jpg">
+        <img id="bg" src="../../static/images/public/background.png">
     </div>
 </template>
 <script>
@@ -120,7 +120,9 @@ export default {
           stars[i].draw();
         }
 
-        window.requestAnimationFrame(animation);
+        if (window.requestAnimationFrame) {
+          window.requestAnimationFrame(animation);
+        }
       }
 
       animation();
